@@ -1,6 +1,6 @@
 
 const express = require('express');
-const router = require('./routers/app.router.js');
+const router = require('./routers/cms.router.js');
 
 
 const app = express();
