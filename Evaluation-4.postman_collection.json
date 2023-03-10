@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "b64f12b0-4822-439b-aaa7-f4be32a68279",
+		"name": "Evaluation-4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19476344"
+	},
+	"item": [
+		{
+			"name": "GET: all collections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/collections",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"collections"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET: all content",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/content",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET: all fields",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/fields",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"fields"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET: fields with values",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/content/fields",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"content",
+						"fields"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST: Bulk create content",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": 1,\n        \"collection_id\": 1,\n        \"content_id\": 1,\n        \"values\": {\n            \"0\": \"Mercedes\",\n            \"1\": \"mercedes.com\"\n        },\n        \"createdAt\": \"2023-03-09T09:00:42.962Z\",\n        \"updatedAt\": \"2023-03-09T09:00:42.962Z\"\n    },\n    {\n        \"id\": 2,\n        \"collection_id\": 1,\n        \"content_id\": 2,\n        \"values\": {\n            \"0\": \"Amazon\",\n            \"1\": \"amazon.com\"\n        },\n        \"createdAt\": \"2023-03-09T09:01:22.822Z\",\n        \"updatedAt\": \"2023-03-09T09:01:22.822Z\"\n    },\n    {\n        \"id\": 3,\n        \"collection_id\": 2,\n        \"content_id\": 3,\n        \"values\": {\n            \"0\": \"siddharth\",\n            \"1\": \"bangalore\"\n        },\n        \"createdAt\": \"2023-03-09T09:03:31.733Z\",\n        \"updatedAt\": \"2023-03-09T09:03:31.733Z\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/content/bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"content",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTH_POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNkc2RzIiwiaWF0IjoxNjc4MjU2NDg3LCJleHAiOjE2NzgzNDI4ODd9.c_HqLLrxbA0lsInWAfN8j-2BZ2ZmeMV-r4P4YNVn2bE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"sid@mail.com\",\n    \"password\":\"siddharth\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5501/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5501",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST: add fields per collection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fields\": {\n        \"0\": \"person\",\n        \"1\": \"address\"\n    }\n        \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/fields/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"fields",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH: change collection name",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"collection_name\": \"companies\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/collections/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"collections",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH: change field",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content_id\": 1,\n    \"collection_id\": 1,\n    \"fields\": {\n        \"0\": \"company_details\",\n        \"1\": \"website\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/fields/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"fields",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST: bulk create Fields",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": 2,\n        \"field_id\": 2,\n        \"content_id\": 2,\n        \"fields\": {\n            \"0\": \"name\",\n            \"1\": \"website\"\n        },\n        \"createdAt\": \"2023-03-09T13:07:48.682Z\",\n        \"updatedAt\": \"2023-03-09T13:07:48.682Z\"\n    },\n    {\n        \"id\": 3,\n        \"field_id\": 3,\n        \"content_id\": 3,\n        \"fields\": {\n            \"0\": \"person\",\n            \"1\": \"address\"\n        },\n        \"createdAt\": \"2023-03-09T13:07:57.134Z\",\n        \"updatedAt\": \"2023-03-09T13:07:57.134Z\"\n    },\n    {\n        \"id\": 1,\n        \"field_id\": 1,\n        \"content_id\": 1,\n        \"fields\": {\n            \"0\": \"brand\",\n            \"1\": \"url\"\n        },\n        \"createdAt\": \"2023-03-09T13:06:50.170Z\",\n        \"updatedAt\": \"2023-03-09T13:27:43.006Z\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/fields/bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"fields",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
