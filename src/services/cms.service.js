@@ -202,6 +202,16 @@ const bulkCreateFields = async (data) => {
   return newFields;
 };
 
+const deleteContent = async (id) => {
+  const deletedContent = await content.destroy({
+    where: {
+      content_id: id
+    }
+  });
+  return deletedContent;
+};
+
+
 // change field name for all content in collection
 // const changeFieldName = async (collection_id, field_name, new_field_name) => {
 //   const allContent = await content.findAll({
@@ -232,5 +242,6 @@ module.exports = {
   getAllContentWithFields,
   getAllContentWithFieldsById,
   getCollectionName,
-  bulkCreateFields
+  bulkCreateFields,
+  deleteContent
 };

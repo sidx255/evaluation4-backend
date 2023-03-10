@@ -14,7 +14,8 @@ const {
   getCollectionName,
   updateField,
   changeCollectionName,
-  bulkCreateFields
+  bulkCreateFields,
+  deleteContent
 } = require('../services/cms.service');
 
 // get all collections
@@ -109,6 +110,17 @@ const populateFields = async (req, res) => {
   res.send(newFields);
 };
 
+const removeContent = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedContent = await deleteContent(id);
+    res.json(deletedContent);
+  }
+  catch (err) {
+    res.json({ message: err.message });
+  }
+};
+
 
 module.exports = {
   addCollection,
@@ -125,5 +137,6 @@ module.exports = {
   fetchCollectionName,
   changeField,
   updateCollectionName,
-  populateFields
+  populateFields,
+  removeContent
 };
