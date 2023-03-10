@@ -5,12 +5,13 @@ module.exports = {
     await queryInterface.createTable('collections', {
       id: {
         autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
         type: Sequelize.INTEGER
       },
       collection_id: {
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
         type: Sequelize.INTEGER
       },
       collection_name: {

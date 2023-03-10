@@ -22,6 +22,15 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE'
       });
 
+      // 1:a relationship with content_fields
+      collection.hasOne(models.content_fields, {
+        foreignKey: 'collection_id',
+        as: 'content_fields',
+        sourceKey: 'collection_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      });
+
 
 
       // collection.hasMany(models.content, {

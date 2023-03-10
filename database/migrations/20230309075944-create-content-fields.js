@@ -14,7 +14,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      content_id: {
+      collection_id: {
         type: Sequelize.INTEGER
       },
       fields: {

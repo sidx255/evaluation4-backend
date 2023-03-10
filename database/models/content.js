@@ -18,9 +18,9 @@ module.exports = (sequelize, DataTypes) => {
 
       // 1 to 1 relationship with content_fields
       content.hasOne(models.content_fields, {
-        foreignKey: 'content_id',
+        foreignKey: 'collection_id',
         as: 'content_fields',
-        sourceKey: 'content_id',
+        sourceKey: 'collection_id',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       });

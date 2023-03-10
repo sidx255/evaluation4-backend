@@ -7,8 +7,14 @@ const {
   getAllContent,
   createFields,
   getAllFields,
+  getAllFieldsById,
   deleteField,
-  getAllContentWithFields
+  getAllContentWithFields,
+  getAllContentWithFieldsById,
+  getCollectionName,
+  updateField,
+  changeCollectionName,
+  bulkCreateFields
 } = require('../services/cms.service');
 
 // get all collections
@@ -42,14 +48,22 @@ const fetchContent = async (req, res) => {
 };
 
 const addFields = async (req, res) => {
-  const { content_id, fields } = req.body;
-  const newFields = await createFields(content_id, fields);
-  res.send(newFields);
+  // take params
+  const { id } = req.params;
+  const { fields } = req.body;
+  const newFields = await createFields(id, fields);
+  res.json(newFields);
 };
 
 const fetchFields = async (req, res) => {
   const allFields = await getAllFields();
-  res.send(allFields);
+  res.json(allFields);
+};
+
+const fetchFieldsById = async (req, res) => {
+  const { id } = req.params;
+  const allFields = await getAllFieldsById(id);
+  res.json(allFields);
 };
 
 const removeField = async (req, res) => {
@@ -63,6 +77,39 @@ const fetchFieldValues = async (req, res) => {
   res.send(allContentWithFields);
 };
 
+const fetchFieldValuesById = async (req, res) => {
+  const { id } = req.params;
+  if(isNaN(id)) return res.status(400).send({ message: 'Invalid ID' });
+  const allContentWithFields = await getAllContentWithFieldsById(id);
+  res.send(allContentWithFields);
+};
+
+const fetchCollectionName = async (req, res) => {
+  const allCollectionName = await getCollectionName(req.params.id);
+  res.send(allCollectionName);
+};
+
+const changeField = async (req, res) => {
+  const { id } = req.params;
+  const { fields } = req.body;
+  const updatedField = await updateField(id, fields);
+  res.send(updatedField);
+};
+
+const updateCollectionName = async (req, res) => {
+  const { id } = req.params;
+  const { collection_name } = req.body;
+  const updatedCollection = await changeCollectionName(id, collection_name);
+  res.send(updatedCollection);
+};
+
+const populateFields = async (req, res) => {
+  const data = req.body;
+  const newFields = await bulkCreateFields(data);
+  res.send(newFields);
+};
+
+
 module.exports = {
   addCollection,
   fetchCollections,
@@ -72,5 +119,11 @@ module.exports = {
   addFields,
   fetchFields,
   removeField,
-  fetchFieldValues
+  fetchFieldValues,
+  fetchFieldsById,
+  fetchFieldValuesById,
+  fetchCollectionName,
+  changeField,
+  updateCollectionName,
+  populateFields
 };
